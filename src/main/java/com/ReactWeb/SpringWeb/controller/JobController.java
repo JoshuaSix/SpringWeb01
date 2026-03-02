@@ -20,15 +20,28 @@ public class JobController {
         return service.findAllJobs();
     }
     @PostMapping("addjob")
-    public String addJob(JobPost jobPost){
+    public String addJob(@RequestBody JobPost jobPost){
         service.addJob(jobPost);
-        return "Success";
+        return "successful!";
     }
 
     @GetMapping("jobPost/{postId}")
     public  JobPost findJobById(@PathVariable int postId){
         return service.findJobById(postId);
     }
+
+    @PutMapping("addjob")
+    public String updatejobPost(@RequestBody JobPost jobPost){
+        service.updateJobPost(jobPost);
+        return "update successful!";
+    }
+
+    @DeleteMapping("addjob")
+    public String deleteJobById(int postId){
+        service.deleteJob(postId);
+        return "delete successful!";
+    }
+
 
 
 
