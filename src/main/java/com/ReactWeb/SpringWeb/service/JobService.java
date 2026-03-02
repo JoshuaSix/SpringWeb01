@@ -3,15 +3,28 @@ package com.ReactWeb.SpringWeb.service;
 import com.ReactWeb.SpringWeb.model.JobPost;
 import com.ReactWeb.SpringWeb.repo.JobRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.function.EntityResponse;
 
+import java.util.List;
+
+@Service
 public class JobService {
       @Autowired
       private JobRepo repo;
 
-      public String add(JobPost jobPost){
+      public void addJob(JobPost jobPost){
           repo.save(jobPost);
-          return "success";
       }
+
+      public JobPost findJobById(int postId){
+          return repo.findById(postId).get();
+      }
+
+      public List<JobPost> findAllJobs(){
+          return repo.findAll();
+      }
+
+
 
 }

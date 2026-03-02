@@ -1,9 +1,21 @@
 package com.ReactWeb.SpringWeb.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
 public class JobPost {
-    private int postId;
+    @Id
+    private Integer postId;
     private String postProfile;
     private String postDesc;
     private int reqExperience;

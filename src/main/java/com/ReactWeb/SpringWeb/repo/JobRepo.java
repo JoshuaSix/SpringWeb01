@@ -1,4 +1,7 @@
 package com.ReactWeb.SpringWeb.repo;
 
-public interface JobRepo {
+import com.ReactWeb.SpringWeb.model.JobPost;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface JobRepo extends JpaRepository<JobPost,Integer> {
 }

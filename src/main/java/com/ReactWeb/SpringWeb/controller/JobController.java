@@ -5,28 +5,35 @@ import com.ReactWeb.SpringWeb.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@Controller("/")
+@RestController
+@RequestMapping("/test")
 public class JobController {
     @Autowired
     private JobService service;
 
-    @PostMapping("/addjob")
-    public void addjob(){
-        service.add(JobPost);
+
+    @GetMapping("addjob")
+    public List<JobPost> getAllJobs(){
+        return service.findAllJobs();
+    }
+    @PostMapping("addjob")
+    public String addJob(JobPost jobPost){
+        service.addJob(jobPost);
+        return "Success";
+    }
+
+    @GetMapping("jobPost/{postId}")
+    public  JobPost findJobById(@PathVariable int postId){
+        return service.findJobById(postId);
     }
 
 
-    @GetMapping("/addjob")
-    public void getAllJobs(){
-    }
 
-    @GetMapping("/addjob")
-    public void getJob(){
-    }
+
+
 
 //    @PostMapping()
 //    public String handleForm(JobPost jobPost){
