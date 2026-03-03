@@ -43,6 +43,11 @@ public class JobController {
         return "delete successful!";
     }
 
+    @GetMapping("/addjob/{keyword}")
+    public List<JobPost> search(@PathVariable String keyword){
+        return service.search(keyword);
+
+    }
 
 
 
