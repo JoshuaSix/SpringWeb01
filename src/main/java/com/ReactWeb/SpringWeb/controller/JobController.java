@@ -19,6 +19,7 @@ public class JobController {
     public List<JobPost> getAllJobs(){
         return service.findAllJobs();
     }
+
     @PostMapping("addjob")
     public String addJob(@RequestBody JobPost jobPost){
         service.addJob(jobPost);
@@ -36,8 +37,8 @@ public class JobController {
         return "update successful!";
     }
 
-    @DeleteMapping("addjob")
-    public String deleteJobById(int postId){
+    @DeleteMapping("addjob/{postId}")
+    public String deleteJobById(@PathVariable int postId){
         service.deleteJob(postId);
         return "delete successful!";
     }

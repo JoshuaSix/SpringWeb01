@@ -4,7 +4,6 @@ import com.ReactWeb.SpringWeb.model.JobPost;
 import com.ReactWeb.SpringWeb.repo.JobRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.function.EntityResponse;
 
 import java.util.List;
 
@@ -26,8 +25,9 @@ public class JobService {
       }
 
 
-      public JobPost updateJobPost(JobPost jobPost){
-          return repo.updateJobPost(jobPost);
+      public String updateJobPost(JobPost jobPost){
+          repo.save(jobPost);
+          return  "succesfully updated job";
       }
 
       public void deleteJob(int postId) {
